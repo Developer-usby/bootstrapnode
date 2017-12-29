@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var icons = require ('./routes/icons');
+var list = require ('./routes/list');
+
 
 var app = express();
 
@@ -24,10 +27,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/icons', icons);
+app.use('/list', list);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  var err = new Error('No está linkado');
   err.status = 404;
   next(err);
 });

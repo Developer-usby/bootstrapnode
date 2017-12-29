@@ -3,20 +3,28 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "dev": "nodemon -e js,jade,json,sass,css,twig ./bin/www"
   },
   "dependencies": {
-    "body-parser": "~1.18.2",
-    "cookie-parser": "~1.4.3",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "csurf": "^1.9.0",
     "debug": "~2.6.9",
-    "express": "~4.15.5",
+    "express": "^4.15.5",
+    "express-stormpath": "^4.0.0",
+    "forms": "^1.3.0",
+    "jade": "^1.11.0",
     "morgan": "~1.9.0",
     "serve-favicon": "~2.4.5",
-    "twig": "~0.10.3"
+    "twig": "~0.10.3",
+    "xtend": "^4.0.1"
   },
   "description": "First view of Tfg",
   "main": "app.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.13.3"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Developer-usby/bootstrap4.git"
