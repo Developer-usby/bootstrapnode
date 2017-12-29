@@ -1,20 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Javier Polanco Marcos">
 
-    <title>Code Usby</title>
+    <title>Bootstrap Designer</title>
 
     <!-- Bootstrap core CSS -->
-    <link href='../public/stylesheets/bootstrap.min.css' rel="stylesheet">
+    <link href='/stylesheets/bootstrap.min.css' rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link rel='stylesheet' href='stylesheets/fontawesome.css'>
+    <link rel='stylesheet' href='/stylesheets/fontawesome.css'>
     <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
     <link rel='stylesheet' href='/stylesheets/bootstrap.css'/>
     <link rel='stylesheet' href='/stylesheets/welcolme/creative.css'/>
@@ -33,9 +30,10 @@
 <body id="page-top">
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+<div id="nav">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Bootstrap Designer</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -51,25 +49,26 @@
                     <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="login">Connect</a>
+                    <a class="nav-link js-scroll-trigger" href="Start"></a>
                 </li>
 
             </ul>
         </div>
     </div>
 </nav>
+</div>
 
 <header class="masthead text-center text-white d-flex">
     <div class="container my-auto">
         <div class="row">
-            <div class="col-lg-10 mx-auto">
-                <h1 class="text-uppercase">
-                    <strong>Design your own Bootstrap</strong>
-                </h1>
+            <div class="col-lg-11 mx-auto">
+                <div class="message-container">
+                    <h1 style="color: #fff3cd; background-color: #0b0b0b; opacity: 0.8; -webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;">&#60;code&#62; Design <span class="message" id="message"> </span>&#60;/code&#62;</h1>
+                </div>
                 <hr>
             </div>
             <div class="col-lg-8 mx-auto">
-                <p class="text-faded mb-5">Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
+                <p class="text-faded mb-5">Using Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your own configurations and start going, no waste of time!</p>
                 <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
             </div>
         </div>
@@ -82,7 +81,7 @@
             <div class="col-lg-8 mx-auto text-center">
                 <h2 class="section-heading text-white">We've got what you need!</h2>
                 <hr class="light my-4">
-                <p class="text-faded mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
+                <p class="text-faded mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use!</p>
                 <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
             </div>
         </div>
@@ -105,6 +104,8 @@
                     <i class="fa fa-4x fa-newspaper text-primary mb-3 sr-icons"></i>
                     <h3 class="mb-3">Up to Date</h3>
                     <p class="text-muted mb-0">We update dependencies to keep things fresh.</p>
+                    <p class="text-muted mb-0">Now in Bootstrap 4!.</p>
+
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 text-center">
@@ -171,15 +172,63 @@
 
 {#<!-- Bootstrap core JavaScript -->#}
 <script src='/javascripts/jquery.magnific-popup.js'></script>
-<script src='/javascripts/bootstrap.bundle.min.js'></script>
+<script src='/javascripts/bootstrap.bundle.js'></script>
 
 {#<!-- Plugin JavaScript -->#}
-<script src='/javascripts/jquery.easing.min.js'></script>
-<script src='/javascripts/jquery.magnific-popup.min.js'></script>
+<script src='/javascripts/jquery.easing.js'></script>
+<script src='/javascripts/jquery.magnific-popup.js'></script>
 
 {#<!-- Custom scripts for this template -->#}
-<script src='/javascripts/welcolme/creative.min.js'></script>
+<script src='/javascripts/welcolme/creative.js'></script>
+<script src='/javascripts/welcolme/scrollreveal.js'></script>
 
 </body>
 
 </html>
+
+<script>
+    (function (w, d) {
+        var message = document.getElementById('message');
+        // var message = message.parentNode;
+        var index = 0;
+        var interval = null;
+        var messages = ['your colors ', 'your life ', 'Bootstrap ']; // Cada posición del array es un mensaje
+        var countMessage = messages.length - 1;
+        var sleepTimeout = 2500;
+        var sleepInterval = 150;
+
+        function update(func) {
+            message.classList.toggle('animate-cursor');
+            setTimeout(function () {
+                message.classList.toggle('animate-cursor');
+                interval = setInterval(func, sleepInterval);
+            }, sleepTimeout);
+        }
+
+        function clear() {
+            var count = message.innerHTML.length;
+            if (count === 0) {
+                clearInterval(interval);
+                message.innerHTML = '';
+                index = (index >= countMessage) ? 0 : index + 1;
+                update(write);
+            } else {
+                message.innerHTML = message.innerHTML.toString().substr(0, count - 1);
+            }
+        }
+
+        function write() {
+            var count = message.innerHTML.length;
+            var countCharacter = messages[index].length - 1;
+            message.innerHTML += messages[index][(count > 0) ? count : 0];
+
+            if (countCharacter === count) {
+                clearInterval(interval);
+                update(clear);
+            }
+        }
+
+        update(write);
+    })(window, document);
+
+</script>
